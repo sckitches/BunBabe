@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Care Guide – BunBabe 🧶</title>
+    <meta name="description" content="Learn how to care for your handmade crochet items from BunBabe." />
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .care-hero {
+            background: radial-gradient(ellipse at 50% 50%, #ffe4ea 0%, var(--cream) 65%);
+            padding: 4rem 1.5rem 2.5rem;
+            text-align: center;
+        }
+
+        .care-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem 4rem;
+        }
+
+        .care-card {
+            background: var(--white);
+            border: 2px solid var(--pink-light);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .care-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .care-card h3 {
+            margin-bottom: 1rem;
+            color: var(--pink-dark);
+        }
+
+        .care-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="BunBabe Logo">
+            BunBabe
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a class="nav-cart" onclick="toggleCart()">
+            🛒 <span class="cart-badge">0</span>
+        </a>
+    </nav>
+
+
+    <main>
+        <section class="care-hero">
+            <h2>Crochet Care Guide 🧼</h2>
+            <p>Keep your handmade cuties soft and sweet for years to come!</p>
+        </section>
+
+        <div class="dots-row">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div class="care-grid">
+            <div class="care-card">
+                <span class="care-icon">🧺</span>
+                <h3>Washing</h3>
+                <p>Hand wash gently in cold water using a mild detergent. Avoid harsh scrubbing which can cause pilling.
+                </p>
+            </div>
+            <div class="care-card">
+                <span class="care-icon">🌬️</span>
+                <h3>Drying</h3>
+                <p>Lay flat on a clean towel to air dry. Do not hang, as the weight of the water can stretch the
+                    stitches!</p>
+            </div>
+            <div class="care-card">
+                <span class="care-icon">✂️</span>
+                <h3>Fuzzies</h3>
+                <p>If your item gets "pills" or fuzzy over time, you can carefully trim them with small scissors or a
+                    fabric shaver.</p>
+            </div>
+            <div class="care-card">
+                <span class="care-icon">🚫</span>
+                <h3>The Don'ts</h3>
+                <p>Never put your crochet items in the dryer or use bleach. The heat can melt synthetic fibers or shrink
+                    cotton.</p>
+            </div>
+        </div>
+
+        <div class="text-center" style="padding-bottom: 4rem;">
+            <p>Have a specific care question? <a href="contact.html"
+                    style="color:var(--pink-dark); font-weight:700;">Ask us here!</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <span>© 2026 BunBabe.</span> All rights reserved. Made with 💗
+    </footer>
+
+    <script src="cart.js"></script>
+    <script src="features.js"></script>
+
+    <!-- ── Cart Drawer ── -->
+    <div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+    <div id="cartDrawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Cart 🛍️</h3>
+            <span class="cart-close" onclick="closeCart()">&times;</span>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-summary">
+                <span>Total:</span>
+                <span id="cartTotal">GH₵ 0</span>
+            </div>
+            <button class="btn cart-checkout-btn" onclick="checkout()">Checkout via WhatsApp/Email</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast"
+        style="display:none; position:fixed; bottom:20px; right:20px; background:var(--pink-dark); color:white; padding:15px 25px; border-radius:12px; font-weight:700; z-index:2000; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+    </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js');
+            });
+        }
+    </script>
+</body>
+
+</html>
